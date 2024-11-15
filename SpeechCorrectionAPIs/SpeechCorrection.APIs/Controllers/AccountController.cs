@@ -11,10 +11,10 @@ namespace SpeechCorrectionAPIs.SpeechCorrection.APIs.Controllers
 {
     public class AccountController : BaseApiController
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -48,10 +48,13 @@ namespace SpeechCorrectionAPIs.SpeechCorrection.APIs.Controllers
             {
                 return BadRequest(new { message = "Email is already taken." });
             }
-            var user = new IdentityUser
+            var user = new AppUser
             {
                 UserName = registerDto.DisplayName,
-                Email = registerDto.Email
+                Email = registerDto.Email,
+                UserType = registerDto.UserType,
+                Address = registerDto.Address
+                
             };
             var result = await _userManager.CreateAsync(user, registerDto.Password);
             if (!result.Succeeded)
@@ -61,7 +64,8 @@ namespace SpeechCorrectionAPIs.SpeechCorrection.APIs.Controllers
             return new UserDto
             {
                 Email = user.Email,
-                DisplayName = user.UserName
+                DisplayName = user.UserName,
+
             };
         }
 

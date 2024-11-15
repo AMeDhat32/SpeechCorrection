@@ -17,7 +17,7 @@ namespace SpeechCorrectionAPIs
             builder.Services.AddControllers();
 
             builder.Services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
             builder.Services.AddIdentity<AppUser, IdentityRole>(options =>

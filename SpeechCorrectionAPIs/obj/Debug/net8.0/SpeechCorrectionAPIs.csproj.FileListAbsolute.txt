@@ -148,3 +148,4 @@ C:\Users\MeDhat\source\repos\SpeechConnectionSolution\SpeechCorrectionAPIs\obj\D
 C:\Users\MeDhat\source\repos\SpeechConnectionSolution\SpeechCorrectionAPIs\obj\Debug\net8.0\SpeechCorrectionAPIs.pdb
 C:\Users\MeDhat\source\repos\SpeechConnectionSolution\SpeechCorrectionAPIs\obj\Debug\net8.0\SpeechCorrectionAPIs.genruntimeconfig.cache
 C:\Users\MeDhat\source\repos\SpeechConnectionSolution\SpeechCorrectionAPIs\obj\Debug\net8.0\ref\SpeechCorrectionAPIs.dll
+C:\Users\MeDhat\source\repos\SpeechConnectionSolution\SpeechCorrectionAPIs\obj\Debug\net8.0\SpeechCorrectionAPIs.sourcelink.json
