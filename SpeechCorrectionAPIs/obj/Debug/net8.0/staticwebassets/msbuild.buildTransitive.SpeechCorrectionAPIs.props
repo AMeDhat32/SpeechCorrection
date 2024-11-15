@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\SpeechCorrectionAPIs.props" />
+</Project>

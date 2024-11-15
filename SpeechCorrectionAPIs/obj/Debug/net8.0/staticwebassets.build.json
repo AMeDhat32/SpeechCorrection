@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "CgHqFmKzcCfQV6xEzsY5jDn5bGe9Fu2OPQexIjNcfvU=",
+  "Source": "SpeechCorrectionAPIs",
+  "BasePath": "_content/SpeechCorrectionAPIs",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
