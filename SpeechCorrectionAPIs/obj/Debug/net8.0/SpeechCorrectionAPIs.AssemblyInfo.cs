@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpeechCorrectionAPIs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c54291e08fffa843a48bb5a9de46e036bf090fb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bfebe6e330e8942957cf727392c66595b80dce50")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpeechCorrectionAPIs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpeechCorrectionAPIs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
