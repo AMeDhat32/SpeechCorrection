@@ -9,5 +9,5 @@ namespace SpeechCorrectionAPIs.SpeechCorrection.Core.Models.Enums
         [EnumMember(Value = "Child")]
         Patient
     }
-    
+        
 }

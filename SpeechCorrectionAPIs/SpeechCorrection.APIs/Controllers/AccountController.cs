@@ -69,6 +69,40 @@ namespace SpeechCorrectionAPIs.SpeechCorrection.APIs.Controllers
             };
         }
 
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordDto forgotPasswordDto)
+        {
+            var user = await _userManager.FindByEmailAsync(forgotPasswordDto.Email);
+            if (user == null)
+            {
+                return NotFound(new { message = "User not found." });
+            }
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            // Simulate sending an email (replace with your actual email-sending logic)
+            // For example: _emailService.SendResetPasswordEmail(user.Email, token);
+
+            return Ok(new { message = "Password reset token generated.", token });
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordDto resetPasswordDto)
+        {
+            var user = await _userManager.FindByEmailAsync(resetPasswordDto.Email);
+            if (user == null)
+            {
+                return NotFound(new { message = "User not found." });
+            }
+
+            var result = await _userManager.ResetPasswordAsync(user, resetPasswordDto.Token, resetPasswordDto.NewPassword);
+            if (!result.Succeeded)
+            {
+                return BadRequest(new { message = "Failed to reset password.", errors = result.Errors });
+            }
+
+            return Ok(new { message = "Password reset successful." });
+        }
+
 
 
 

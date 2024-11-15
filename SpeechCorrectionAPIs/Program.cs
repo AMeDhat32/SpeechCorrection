@@ -27,7 +27,7 @@ namespace SpeechCorrectionAPIs
                 // options.Password.RequireLowercase = false;
                 // options.Password.RequireUppercase = false;
                 // options.Password.RequiredLength = 6;
-            }).AddEntityFrameworkStores<AppIdentityDbContext>();
+            }).AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 
 
             builder.Services.AddEndpointsApiExplorer();
