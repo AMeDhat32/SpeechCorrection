@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechCorrection.APIs", "SpeechCorrection.APIs\SpeechCorrection.APIs.csproj", "{678CBD92-36DD-40EA-853E-11AF90683EB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechCorrection.Core", "SpeechCorrection.Core\SpeechCorrection.Core.csproj", "{19B4C494-B877-47AA-98CE-88B2E3575403}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechCorrection.Repository", "SpeechCorrection.Repository\SpeechCorrection.Repository.csproj", "{4F1BB42D-0761-41A3-84A0-F07442D7582C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechCorrection.Service", "SpeechCorrection.Service\SpeechCorrection.Service.csproj", "{917F4E0F-9D55-4BE4-8CD1-2C34CC0B1314}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{678CBD92-36DD-40EA-853E-11AF90683EB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{678CBD92-36DD-40EA-853E-11AF90683EB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{678CBD92-36DD-40EA-853E-11AF90683EB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{678CBD92-36DD-40EA-853E-11AF90683EB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19B4C494-B877-47AA-98CE-88B2E3575403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19B4C494-B877-47AA-98CE-88B2E3575403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19B4C494-B877-47AA-98CE-88B2E3575403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19B4C494-B877-47AA-98CE-88B2E3575403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F1BB42D-0761-41A3-84A0-F07442D7582C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F1BB42D-0761-41A3-84A0-F07442D7582C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F1BB42D-0761-41A3-84A0-F07442D7582C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F1BB42D-0761-41A3-84A0-F07442D7582C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917F4E0F-9D55-4BE4-8CD1-2C34CC0B1314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917F4E0F-9D55-4BE4-8CD1-2C34CC0B1314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917F4E0F-9D55-4BE4-8CD1-2C34CC0B1314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917F4E0F-9D55-4BE4-8CD1-2C34CC0B1314}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

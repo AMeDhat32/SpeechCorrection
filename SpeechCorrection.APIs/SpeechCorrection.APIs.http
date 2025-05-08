@@ -1,0 +1,6 @@
+@SpeechCorrection.APIs_HostAddress = http://localhost:5148
+
+GET {{SpeechCorrection.APIs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
