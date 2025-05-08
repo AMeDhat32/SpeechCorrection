@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SpeechCorrection.APIs.Errors;
+using SpeechCorrection.APIs.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,7 @@ if (app.Environment.IsDevelopment())
 {
 	app.MapOpenApi();
 }
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 
