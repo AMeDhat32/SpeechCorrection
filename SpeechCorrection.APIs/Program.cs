@@ -30,6 +30,7 @@ if (app.Environment.IsDevelopment())
 	app.MapOpenApi();
 }
 app.UseMiddleware<ExceptionMiddleware>();
+app.UseStatusCodePagesWithRedirects("/error/{0}");
 
 app.UseHttpsRedirection();
 
