@@ -7,9 +7,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 #region ConfigueServices 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+});
+
+// enable swagger service
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
 
 builder.Services.AddOpenApi();
+// handle validation errors globally
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
 	options.InvalidModelStateResponseFactory = (context) =>
@@ -27,11 +37,13 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-	app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    app.MapOpenApi();
 }
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseStatusCodePagesWithRedirects("/error/{0}");
-
+app.UseStaticFiles();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
