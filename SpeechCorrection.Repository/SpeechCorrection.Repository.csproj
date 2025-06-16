@@ -14,4 +14,9 @@
     <ProjectReference Include="..\SpeechCorrection.Core\SpeechCorrection.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Identity\Migrations\" />
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
 </Project>

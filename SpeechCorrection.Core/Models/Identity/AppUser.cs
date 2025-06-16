@@ -19,7 +19,7 @@ namespace SpeechCorrection.Core.Models.Identity
         
         public string? City { get; set; }
 
-        public string? Genger { get; set; }
+        public string? Gender { get; set; }
 
     }
 }

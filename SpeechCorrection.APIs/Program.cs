@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SpeechCorrection.APIs.Errors;
 using SpeechCorrection.APIs.Middlewares;
+using SpeechCorrection.Repository.Data;
+using SpeechCorrection.Repository.Data.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,12 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
 });
+// configure database context
+builder.Services.AddDbContext<IdentityContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection")));
+builder.Services.AddDbContext<ApplicationContext> (
+options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")).UseLazyLoadingProxies());
+
 
 // enable swagger service
 builder.Services.AddEndpointsApiExplorer();
@@ -29,9 +38,31 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 		return new BadRequestObjectResult(new ApiValidationErrorResponse() { Errors = errors });
 	};
 });
+
+
+
+
 #endregion
 
 var app = builder.Build();
+
+// auto migrate the database
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+var logger = services.GetRequiredService<ILogger<Program>>();
+try
+{
+    var identityContext = services.GetRequiredService<IdentityContext>();
+    await identityContext.Database.MigrateAsync();
+
+    var applicationContext = services.GetRequiredService<ApplicationContext>();
+    await applicationContext.Database.MigrateAsync();
+}
+catch (Exception ex)
+{
+    logger.LogError(ex, "An error occurred during migration");
+}
+
 
 #region MiddleWares
 // Configure the HTTP request pipeline.
