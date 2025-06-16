@@ -13,7 +13,8 @@ namespace SpeechCorrection.Repository.Configuration
     {
         public void Configure(EntityTypeBuilder<Patient> builder)
         {
-            
+            builder.Property(p => p.Id)
+                   .ValueGeneratedNever();
         }
     }
 }

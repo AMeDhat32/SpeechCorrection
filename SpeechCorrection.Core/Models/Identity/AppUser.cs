@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using SpeechCorrection.Core.Models.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace SpeechCorrection.Core.Models.Identity
     public class AppUser  : IdentityUser
     {
         public string? FirstName { get; set; }
-        public string? LasttName { get; set; }
-        public DateTime? BirthDate { get; set; }
+        public string? LastName { get; set; }
+        public DateOnly? BirthDate { get; set; }
 
         public string? ProfilePictureUrl { get; set; }
 
@@ -20,6 +21,8 @@ namespace SpeechCorrection.Core.Models.Identity
         public string? City { get; set; }
 
         public string? Gender { get; set; }
+
+        public userType? UserType { get; set; }
 
     }
 }

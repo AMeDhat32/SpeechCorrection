@@ -17,10 +17,10 @@ namespace SpeechCorrection.APIs.Errors
         {
             return statusCode switch
             {
-                400 => "Bad Request",
-                401 => "Unauthorized",
-                404 => "Not Found",
-                500 => "Internal Server Error",
+                400 => "What you just said makes no sense",
+                401 => "Get the hell out of here",
+                404 => "Lost? just like your mind",
+                500 => "Something broke, probably my soul",
                 _ => "Error? What error?"
             };
         }

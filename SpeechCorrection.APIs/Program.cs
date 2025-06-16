@@ -1,9 +1,13 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SpeechCorrection.APIs.Errors;
 using SpeechCorrection.APIs.Middlewares;
+using SpeechCorrection.Core.Models.Identity;
+using SpeechCorrection.Core.Services.Contract;
 using SpeechCorrection.Repository.Data;
 using SpeechCorrection.Repository.Data.Identity;
+using SpeechCorrection.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +23,11 @@ builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection")));
 builder.Services.AddDbContext<ApplicationContext> (
 options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")).UseLazyLoadingProxies());
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+    .AddEntityFrameworkStores<IdentityContext>()
+    .AddDefaultTokenProviders();
+
 
 
 // enable swagger service

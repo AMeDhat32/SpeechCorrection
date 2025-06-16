@@ -12,8 +12,8 @@ using SpeechCorrection.Repository.Data.Identity;
 namespace SpeechCorrection.Repository.Data.Identity.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20250616000421_CreateDatabase")]
-    partial class CreateDatabase
+    [Migration("20250616203950_ChangeDateOfBirthToDateOnly")]
+    partial class ChangeDateOfBirthToDateOnly
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -188,8 +188,8 @@ namespace SpeechCorrection.Repository.Data.Identity.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("BirthDate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly?>("BirthDate")
+                        .HasColumnType("date");
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
@@ -211,7 +211,7 @@ namespace SpeechCorrection.Repository.Data.Identity.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LasttName")
+                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -249,6 +249,9 @@ namespace SpeechCorrection.Repository.Data.Identity.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<int?>("UserType")
+                        .HasColumnType("int");
 
                     b.Property<string>("nationality")
                         .HasColumnType("nvarchar(max)");

@@ -12,7 +12,7 @@ using SpeechCorrection.Repository.Data;
 namespace SpeechCorrection.Repository.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250615235806_CreateDatabase")]
+    [Migration("20250616164158_CreateDatabase")]
     partial class CreateDatabase
     {
         /// <inheritdoc />

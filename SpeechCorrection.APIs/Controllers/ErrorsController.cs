@@ -6,7 +6,7 @@ namespace SpeechCorrection.APIs.Controllers
 {
     [Route("error/[controller]")]
     [ApiController]
-    [ApiExplorerSettings(IgnoreApi = false)]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class ErrorsController : ControllerBase
     {
 
