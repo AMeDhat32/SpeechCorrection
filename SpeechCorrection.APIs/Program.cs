@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 using SpeechCorrection.APIs.Errors;
+using SpeechCorrection.APIs.Extensions;
 using SpeechCorrection.APIs.Middlewares;
 using SpeechCorrection.Core.Models.Identity;
 using SpeechCorrection.Core.Services.Contract;
@@ -31,8 +33,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
 
 
 // enable swagger service
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerServices();
 
 
 
@@ -77,9 +78,14 @@ catch (Exception ex)
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    app.MapOpenApi();
+    app.AddSwaggerMiddleware();
+    app.MapScalarApiReference(options =>
+       options
+        .WithTheme(ScalarTheme.Solarized)
+       .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient)
+     );
+
+    //app.MapOpenApi();
 }
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseStatusCodePagesWithRedirects("/error/{0}");
