@@ -10,7 +10,7 @@ namespace SpeechCorrection.APIs.Extensions
             Services.AddEndpointsApiExplorer();
             Services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Talabat API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SpeechCorrection", Version = "v1" });
             });
 
             return Services;
@@ -20,11 +20,14 @@ namespace SpeechCorrection.APIs.Extensions
         {
             app.UseSwagger(options =>
             {
-
                 options.RouteTemplate = "openapi/{documentName}.json";
             });
-            app.UseSwaggerUI();
-            
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/openapi/v1.json", "SpeechCorrection API");
+                
+            });
 
             return app;
         }

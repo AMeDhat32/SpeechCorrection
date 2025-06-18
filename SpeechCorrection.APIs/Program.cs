@@ -76,17 +76,19 @@ catch (Exception ex)
 
 #region MiddleWares
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment()||app.Environment.IsProduction())
 {
     app.AddSwaggerMiddleware();
+    app.MapOpenApi();
     app.MapScalarApiReference(options =>
        options
-        .WithTheme(ScalarTheme.Solarized)
+        .WithTheme(ScalarTheme.Mars)
        .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient)
      );
 
-    //app.MapOpenApi();
+
 }
+
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseStatusCodePagesWithRedirects("/error/{0}");
 app.UseStaticFiles();
