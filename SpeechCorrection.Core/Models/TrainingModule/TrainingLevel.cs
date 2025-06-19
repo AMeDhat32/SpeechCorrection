@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SpeechCorrection.Core.Models.TrainingModule
+{
+    public class TrainingLevel
+    {
+        public int Id { get; set; }
+        public int Level { get; set; }
+
+        public int LetterId { get; set; }
+
+        public Letter Letter { get; set; }
+
+        public ICollection<TrainingRecord> TrainingRecords { get; set; } = new List<TrainingRecord>();
+    }
+}
