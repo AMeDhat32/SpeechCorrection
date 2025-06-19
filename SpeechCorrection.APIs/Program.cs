@@ -25,10 +25,8 @@ builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection")));
 builder.Services.AddDbContext<ApplicationContext> (
 options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")).UseLazyLoadingProxies());
-builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddIdentity<AppUser, IdentityRole>()
-    .AddEntityFrameworkStores<IdentityContext>()
-    .AddDefaultTokenProviders();
+//identity services 
+builder.Services.AddIdentityServices(builder.Configuration);    
 
 
 
