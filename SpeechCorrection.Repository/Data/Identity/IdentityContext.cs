@@ -19,9 +19,8 @@ namespace SpeechCorrection.Repository.Data.Identity
         {
             base.OnModelCreating(modelBuilder);
             
-             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            
         }
-        // Define DbSets for your entities here if needed
-         public DbSet<AppUser> AppUsers { get; set;}
+       
     }
 }

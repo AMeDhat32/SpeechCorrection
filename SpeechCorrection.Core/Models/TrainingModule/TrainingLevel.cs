@@ -13,8 +13,8 @@ namespace SpeechCorrection.Core.Models.TrainingModule
 
         public int LetterId { get; set; }
 
-        public Letter Letter { get; set; }
+        public virtual Letter Letter { get; set; }
 
-        public ICollection<TrainingRecord> TrainingRecords { get; set; } = new List<TrainingRecord>();
+        public virtual ICollection<TrainingRecord> TrainingRecords { get; set; } = new List<TrainingRecord>();
     }
 }

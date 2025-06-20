@@ -11,6 +11,6 @@ namespace SpeechCorrection.Core.Models.TrainingModule
         public int Id { get; set; }
         public string Symbol { get; set; }
 
-        public ICollection<TrainingLevel> TrainingLevels { get; set; } = new List<TrainingLevel>();
+        public virtual ICollection<TrainingLevel> TrainingLevels { get; set; } = new List<TrainingLevel>();
     }
 }

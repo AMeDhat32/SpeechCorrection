@@ -16,6 +16,6 @@ namespace SpeechCorrection.Core.Models.TrainingModule
 
         public int TrainingLevelId { get; set; }
 
-        public TrainingLevel TrainingLevel { get; set; }
+        public virtual TrainingLevel TrainingLevel { get; set; }
     }
 }

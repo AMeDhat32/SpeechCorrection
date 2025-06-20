@@ -60,13 +60,15 @@ var app = builder.Build();
 // auto migrate the database
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
+var applicationContext = services.GetRequiredService<ApplicationContext>();
+var identityContext = services.GetRequiredService<IdentityContext>();
 var logger = services.GetRequiredService<ILogger<Program>>();
 try
 {
-    var identityContext = services.GetRequiredService<IdentityContext>();
+    
     await identityContext.Database.MigrateAsync();
 
-    var applicationContext = services.GetRequiredService<ApplicationContext>();
+    
     await applicationContext.Database.MigrateAsync();
 }
 catch (Exception ex)

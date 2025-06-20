@@ -71,6 +71,102 @@ namespace SpeechCorrection.Repository.Data.Migrations
 
                     b.ToTable("Patients");
                 });
+
+            modelBuilder.Entity("SpeechCorrection.Core.Models.TrainingModule.Letter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Symbol")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Letters");
+                });
+
+            modelBuilder.Entity("SpeechCorrection.Core.Models.TrainingModule.TrainingLevel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("LetterId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LetterId");
+
+                    b.ToTable("TrainingLevels");
+                });
+
+            modelBuilder.Entity("SpeechCorrection.Core.Models.TrainingModule.TrainingRecord", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RecordingUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TrainingLevelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TrainingLevelId");
+
+                    b.ToTable("TrainingRecords");
+                });
+
+            modelBuilder.Entity("SpeechCorrection.Core.Models.TrainingModule.TrainingLevel", b =>
+                {
+                    b.HasOne("SpeechCorrection.Core.Models.TrainingModule.Letter", "Letter")
+                        .WithMany("TrainingLevels")
+                        .HasForeignKey("LetterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Letter");
+                });
+
+            modelBuilder.Entity("SpeechCorrection.Core.Models.TrainingModule.TrainingRecord", b =>
+                {
+                    b.HasOne("SpeechCorrection.Core.Models.TrainingModule.TrainingLevel", "TrainingLevel")
+                        .WithMany("TrainingRecords")
+                        .HasForeignKey("TrainingLevelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TrainingLevel");
+                });
+
+            modelBuilder.Entity("SpeechCorrection.Core.Models.TrainingModule.Letter", b =>
+                {
+                    b.Navigation("TrainingLevels");
+                });
+
+            modelBuilder.Entity("SpeechCorrection.Core.Models.TrainingModule.TrainingLevel", b =>
+                {
+                    b.Navigation("TrainingRecords");
+                });
 #pragma warning restore 612, 618
         }
     }
