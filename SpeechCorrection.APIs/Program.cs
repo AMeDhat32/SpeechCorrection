@@ -6,7 +6,9 @@ using SpeechCorrection.APIs.Errors;
 using SpeechCorrection.APIs.Extensions;
 using SpeechCorrection.APIs.Middlewares;
 using SpeechCorrection.Core.Models.Identity;
+using SpeechCorrection.Core.Repositories.Contract;
 using SpeechCorrection.Core.Services.Contract;
+using SpeechCorrection.Repository;
 using SpeechCorrection.Repository.Data;
 using SpeechCorrection.Repository.Data.Identity;
 using SpeechCorrection.Service;
@@ -26,8 +28,9 @@ builder.Services.AddDbContext<IdentityContext>(options =>
 builder.Services.AddDbContext<ApplicationContext> (
 options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")).UseLazyLoadingProxies());
 //identity services 
-builder.Services.AddIdentityServices(builder.Configuration);    
+builder.Services.AddIdentityServices(builder.Configuration);
 
+builder.Services.AddScoped<ITrainingRepository, TrainingRepository>();
 
 
 // enable swagger service
