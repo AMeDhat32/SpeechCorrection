@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using SpeechCorrection.APIs.Errors;
 using SpeechCorrection.APIs.Extensions;
+using SpeechCorrection.APIs.Helpers;
 using SpeechCorrection.APIs.Middlewares;
 using SpeechCorrection.Core.Models.Identity;
 using SpeechCorrection.Core.Repositories.Contract;
@@ -35,6 +36,8 @@ builder.Services.AddScoped<ITrainingRepository, TrainingRepository>();
 
 // enable swagger service
 builder.Services.AddSwaggerServices();
+// allow DI for imapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
 

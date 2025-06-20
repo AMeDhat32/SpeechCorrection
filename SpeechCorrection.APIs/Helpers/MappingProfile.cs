@@ -20,8 +20,9 @@ namespace SpeechCorrection.APIs.Helpers
             CreateMap<TrainingRecord,TrainingRecordDto>()
                 .ForMember(dest =>dest.letter,opt => opt.MapFrom(src => src.TrainingLevel.Letter.Symbol))
                 .ForMember(dest => dest.level, opt => opt.MapFrom(src => src.TrainingLevel.Level))
-                .ForMember(dest => dest.RecordingUrl, opt => opt.MapFrom(src => src.RecordingUrl))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+                
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.RecordingUrl, opt => opt.MapFrom<TrainingRecordUrlResolver>());
         }
     }
 }
